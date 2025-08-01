@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Girlfriend Day 💐</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Kalam', cursive;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .page {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    #page1 {
+      display: flex;
+      background: url('background halaman 1.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    #page1 h1 {
+      color: white;
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    #openBtn {
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: pink;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    #page2 {
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 80%;
+      max-width: 500px;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.7);
+    }
+
+    #page3 {
+      background: url('background halaman 3.jpg') no-repeat center center;
+      background-size: cover;
+      padding: 40px;
+      color: #2d2d2d;
+      display: flex;
+    }
+
+    .message {
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 700px;
+    }
+
+    .message p {
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    /* Efek kelap kelip */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: sparkle 2s linear infinite;
+      z-index: 10;
+    }
+
+    @keyframes sparkle {
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
+    }
+
+    /* Efek bunga jatuh */
+    .flower {
+      position: absolute;
+      top: -50px;
+      width: 30px;
+      animation: fall linear infinite;
+      z-index: 9;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Halaman 1 -->
+  <div id="page1" class="page">
+    <div>
+      <h1>Selamat Girlfriend Day 💕</h1>
+      <button id="openBtn">Open</button>
+    </div>
+  </div>
+
+  <!-- Halaman 2 - Slideshow -->
+  <div id="page2" class="page">
+    <div class="slideshow-container">
+
+      <div class="slide"><img src="foto 9.jpg" alt="foto 9"></div>
+      <div class="slide"><img src="foto 10.jpg" alt="foto 10"></div>
+      <div class="slide"><img src="foto 11.jpg" alt="foto 11"></div>
+      <div class="slide"><img src="foto 12.jpg" alt="foto 12"></div>
+      <div class="slide"><img src="foto 13.jpg" alt="foto 13"></div>
+      <div class="slide"><img src="foto 14.jpg" alt="foto 14"></div>
+      <div class="slide"><img src="foto 15.jpg" alt="foto 15"></div>
+    </div>
+  </div>
+
+  <!-- Halaman 3 - Pesan Romantis -->
+  <div id="page3" class="page">
+    <div class="message">
+      <p>
+        Hai sayang, selamat Girlfriend Day yaa 🤍<br><br>
+        Maaf ya sayang, aku belum bisa ngasih bunga, cokelat, atau kejutan manis kayak cowok-cowok di luar sana, tapi jujur, aku selalu ingin kasih yang terbaik buat kamu dengan cara aku sendiri.<br><br>
+        Mungkin aku belum bisa ngasih hal-hal mewah, tapi aku janji bakal terus berusaha jadi cowok yang selalu ada, yang kamu bisa andalkan kapan aja, yang sayang kamu dengan cara yang sederhana tapi tulus.<br><br>
+        Terima kasih udah tetap di sini, nemenin hari-hariku, bikin semuanya terasa lebih ringan dan berwarna. Kamu itu anugerah, bukan cuma buat hari ini tapi setiap hari.<br><br>
+        I love you sayangkuuu 🫶🏻
+      </p>
+    </div>
+  </div>
+
+  <!-- Efek dan logika -->
+  <script>
+    const page1 = document.getElementById("page1");
+    const page2 = document.getElementById("page2");
+    const page3 = document.getElementById("page3");
+    const openBtn = document.getElementById("openBtn");
+
+    const audio = new Audio("Budi Doremi - Tak Kan Hilang _ Never Fade (Official Music Video) [Xi-nRpfFgDQ].mp3");
+    audio.autoplay = true;
+    audio.loop = false;
+
+    openBtn.addEventListener("click", () => {
+      page1.style.display = "none";
+      page2.style.display = "flex";
+      audio.play().catch(e => {
+        console.log("Autoplay gagal: ", e);
+      });
+      startSlideshow();
+    });
+
+    let slideIndex = 0;
+    function startSlideshow() {
+      const slides = document.getElementsByClassName("slide");
+      let interval = 3500;
+      function showSlide() {
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          page2.style.display = "none";
+          page3.style.display = "flex";
+          return;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlide, interval);
+      }
+      showSlide();
+    }
+
+    // Efek bunga jatuh
+    function createFlower() {
+      const flower = document.createElement('img');
+      flower.src = 'https://i.ibb.co/0Jmshvb/flower.png';
+      flower.classList.add('flower');
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = (3 + Math.random() * 3) + 's';
+      document.body.appendChild(flower);
+      setTimeout(() => flower.remove(), 6000);
+    }
+    setInterval(createFlower, 500);
+  </script>
+
+</body>
+</html>
